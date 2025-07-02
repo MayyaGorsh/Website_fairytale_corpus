@@ -1,5 +1,4 @@
 # Corpus of Russian Folk Tales
-
 This corpus consists of **120 Russian folk tales** collected from the website https://skazki-pesni.ru.
 
 ## Main Libraries Used
