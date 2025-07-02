@@ -1,79 +1,94 @@
-# Корпус русских народных сказок
+# Corpus of Russian Folk Tales
 
-Корпус состоит из 120 русских народных сказок. Сказки взяты с сайта https://skazki-pesni.ru.
+This corpus consists of **120 Russian folk tales** collected from the website https://skazki-pesni.ru.
 
-## Основные используемые библиотеки 
-- fake_useragent - парсинг;
-- nltk - токенизация;
-- pymorphy2 - лемматизация;
-- Natasha - POS-теггинг и лемматизация;
-- pandas - создание DataFrame;
-- re - написание регулярных выражений.
+## Main Libraries Used
 
-## Работа корпуса
+- **fake_useragent** – for bypassing website protection and parsing  
+- **nltk** – for tokenization  
+- **pymorphy2** – for lemmatization  
+- **Natasha** – for POS-tagging and lemmatization  
+- **pandas** – for building dataframes  
+- **re** – for working with regular expressions  
 
-Программа разделена на несколько блоков.
-1. Парсинг
-   - Для обхода защиты сайта использовался fake_useragent.
-   - Функция get_nth_page обрабатывает одну страницу сайта (вычленяет текст, название, ссылку на сказку)
-   - Функция run_all принимает количество страниц с сайта и обрабатывает их по-странично.
-  
-2. Создание базы данных
-   - Разбиваем все тексты на предложения, создаем колонки для всех предложений, названий сказок, ссылок на сказки, предложений без пунктуации.
-   - Записываем все в файл 'fairy_tales_razdel_full.csv'.
-     
-3. Обработка запроса и поиск предложений
+## Corpus Workflow
 
-   3.1. Лемматизация, токенизация, POS-tagging
-   - Выполняем POS-теггинг, токенезацию, лемматизацию с помощью Natasha и pymorphy2.
-   - Результаты сохраняем в файл 'corpus.csv'.
-   
-   3.2. Проверка конкретного слова на соответствие запросу
-   - Функция check_word_form - функция для проверки всех форм слова, игнорируя регистр.
-   - Функция check_exact_form - функция для проверки точной формы слова без учета регистра.
-   - Функция check_lemma_and_pos - функция для проверки по лемме и тегу части речи.
-   - Функция check_pos - функция для проверки соответствия частеречного тега.
-   - Функция word_fits_request_part - функция для вызова нужной из четырех функций выше в зависимости от запроса.
+The program is divided into several functional blocks:
 
-   3.3. Основная функция поиска
-   - Функция search - основная функция, которая может принимать слово, слово в кавычках, лемма+POS-tag, POS-tag.
-   - Возвращает предложения, подходящие под запрос, вместе с источником и ссылкой на источник.
+### 1. Parsing
 
-4. Поиск коллокаций
-   - Функция get_collocations - функция для поиска коллокаций, принимает слово, возвраащет коллокации с этим словом и их количество.
-  
-5. Итоговая программа
+- `fake_useragent` is used to bypass website protection.  
+- The function `get_nth_page` processes a single page from the site (extracts text, title, and fairy tale URL).  
+- The function `run_all` takes the number of pages to process and runs them one by one.
 
-   5.1. Вывод найденных примеров
-   - Функция pretty_line - функция для выравнивая контекстов определенного примера.
-   - Функция get_all_pretty_lines - функция, которая выводит все найденные примеры (выровненные).
-     
-   5.2. Взаимодействие с программой (см.Взаимодействие пользователя с корпусом)
-      
+### 2. Building the Database
 
-## Взаимодействие пользователя с корпусом
+- All texts are split into sentences. Columns are created for: sentences, fairy tale titles, source links, and punctuation-free sentences.  
+- Data is saved to the file `fairy_tales_razdel_full.csv`.
 
-1. Пользователь вводит интересующее его слово, слово в кавычках, лемма+POS-tag, POS-tag.
-2. Вывод программы состоит из:
-   * предложений, которые содержат все предложения с этим запросом с разделением на левый, центральный, правый контексты и с указанием на источник и название сказки.
-   * коллокаций с их частотностью.
+### 3. Query Processing and Sentence Search
 
-   __Пример: ввод пользователя - 'лисичка'__
+#### 3.1. Lemmatization, Tokenization, POS-tagging
 
-     *Забралась | лисичка   | в теремок. || Предложение из Теремок https://skazki-pesni.ru/teremok/*
-     
-     *Жили-были в лесу | лисичка   | и зайка. || Предложение из Заюшкина избушка https://skazki-pesni.ru/zayushkina-izbushka/*
+- POS-tagging, tokenization, and lemmatization are performed using **Natasha** and **pymorphy2**.  
+- Results are saved to `corpus.csv`.
 
-     
-     *с лисичкой | 3*
-     
-     *лисичкой близко | 3*
-     
-     *пришла лисичка | 3*
+#### 3.2. Word Matching Functions
 
-   __Пример: ввод пользователя - 'ADV NOUN'__
+- `check_word_form`: checks all forms of a word, case-insensitive.  
+- `check_exact_form`: checks the exact form, case-insensitive.  
+- `check_lemma_and_pos`: checks lemma and POS tag.  
+- `check_pos`: checks POS tag only.  
+- `word_fits_request_part`: calls one of the four functions above based on the query type.
 
-     *Бежит | мимо мышка-норушка.| || Предложение из Теремок https://skazki-pesni.ru/teremok/*
+#### 3.3. Main Search Function
 
-     *Бежит | мимо зайчик-побегайчик.| || Предложение из Теремок https://skazki-pesni.ru/teremok/*
+- `search`: the main function that accepts a word, quoted word, lemma+POS, or POS only.  
+- Returns matched sentences along with the source title and link.
 
+### 4. Collocation Search
+
+- `get_collocations`: takes a word and returns its collocations with frequencies.
+
+### 5. Final Output Program
+
+#### 5.1. Displaying Results
+
+- `pretty_line`: formats a sentence context for display.  
+- `get_all_pretty_lines`: outputs all matching results in a formatted way.
+
+#### 5.2. User Interaction  
+(see next section)
+
+## User Interaction with the Corpus
+
+1. The user inputs a query:  
+   - a single word  
+   - a quoted word  
+   - lemma+POS  
+   - POS only  
+
+2. The program returns:  
+   - **All sentences** containing the query, displayed with left/center/right context, source title and link.  
+   - **Collocations** of the query with their frequencies.
+
+### Example: user input – `лисичка`
+
+*Забралась | лисичка | в теремок.*  
+_Example from "Teremok" – https://skazki-pesni.ru/teremok/_
+
+*Жили-были в лесу | лисичка | и зайка.*  
+_Example from "Zayushkina izba" – https://skazki-pesni.ru/zayushkina-izbushka/_
+
+**Collocations:**  
+*с лисичкой – 3*  
+*лисичкой близко – 3*  
+*пришла лисичка – 3*
+
+### Example: user input – `ADV NOUN`
+
+*Бежит | мимо мышка-норушка.*  
+_Example from "Teremok" – https://skazki-pesni.ru/teremok/_
+
+*Бежит | мимо зайчик-побегайчик.*  
+_Example from "Teremok" – https://skazki-pesni.ru/teremok/_
