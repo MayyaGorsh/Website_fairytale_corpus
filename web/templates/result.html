@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc; /* Бежевый фон */
+            color: #4b2e2e; /* Темно-коричневый текст */
+        }
+        header {
+            background-color: #d2b48c; /* Темно-бежевый цвет шапки */
+            color: #4b2e2e; /* Темно-коричневый цвет текста в шапке */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3b7d4e; /* Спокойный зеленый цвет для ссылок */
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .search-box {
+            background-color: #fff; /* Белый фон для окна ввода */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для окна */
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .search-box input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #4b2e2e;
+        }
+        .search-box input[type="text"]::placeholder {
+            color: #b0b0b0; /* Бледный серый для текста-заполнителя */
+        }
+        .search-box button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3b7d4e; /* Спокойный зеленый для кнопки */
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Результат поиска</h1>
+        <nav>
+            <a href="/">О нас</a>
+            <a href="/search">Найти слово</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Результаты:</h2>
+        <pre>{{ result }}</pre>
+        <button onclick="window.history.back()">Назад к поиску</button>
+    </div>
+</body>
+</html>

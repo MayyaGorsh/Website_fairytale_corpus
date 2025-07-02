@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сказочный корпус</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc; /* Бежевый фон */
+            color: #4b2e2e; /* Темно-коричневый текст */
+        }
+        header {
+            background-color: #d2b48c; /* Темно-бежевый цвет шапки */
+            color: #4b2e2e; /* Темно-коричневый цвет текста в шапке */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3b7d4e; /* Спокойный зеленый цвет для ссылок */
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .search-box {
+            background-color: #fff; /* Белый фон для окна ввода */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для окна */
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .search-box input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #4b2e2e;
+        }
+        .search-box input[type="text"]::placeholder {
+            color: #b0b0b0; /* Бледный серый для текста-заполнителя */
+        }
+        .search-box button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3b7d4e; /* Спокойный зеленый для кнопки */
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Сказочный корпус</h1>
+        <nav>
+            <a href="/about">О нас</a> <!-- Ссылка на страницу "О нас" -->
+            <a href="/">Найти слово</a> <!-- Ссылка на страницу поиска -->
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Найти слово</h2>
+        <form action="/search" method="post" class="search-box">
+            <input type="text" name="query" placeholder="Ввести запрос">
+            <button type="submit">Найти</button>
+        </form>
+    </div>
+
+<div id="find-word">
+            <div class="usage-rules">
+                <h3>Правила использования корпуса:</h3>
+                <ul>
+                    <li>Можно найти не более трех стоящих подряд токенов</li>
+                    <li>Разделяйте токены в запросе пробелами</li>
+                    <li>Если вы хотите найти словоформу, заключите токен в кавычки</li>
+                    <li>Если вы хотите найти слова определенной части речи, напишите часть речи на английском, заглавными буквами</li>
+                    <li>Если вы хотите найти определенное слово определенной части речи, напишите лемму, затем +, затем часть речи</li>
+                    <li>Если вы хотите найти слово в любой форме, просто напишите его</li>
+                </ul>
+                <h3>Примеры запросов:</h3>
+                <ul>
+                    <li>знаю</li>
+                    <li>знать</li>
+                    <li>ADJ NOUN VERB</li>
+                    <li>"теремок"</li>
+                    <li>ADJ дом</li>
+                    <li>знать+VERB</li>
+                    <li>знать+VERB "ничего" "не"</li>
+                    <li>"ничего" "не" "знаю"</li>
+                </ul>
+            </div>
+        </div>
+</body>
+</html>

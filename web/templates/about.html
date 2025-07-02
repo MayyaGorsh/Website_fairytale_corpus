@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Сказочный корпус</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc; /* Бежевый фон */
+            color: #4b2e2e; /* Темно-коричневый текст */
+        }
+        header {
+            background-color: #d2b48c; /* Темно-бежевый цвет шапки */
+            color: #4b2e2e; /* Темно-коричневый цвет текста в шапке */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3b7d4e; /* Спокойный зеленый цвет для ссылок */
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .about-section {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .about-text {
+            max-width: 400px;
+            line-height: 1.6;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .contact-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .contact-list li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Сказочный корпус</h1>
+        <nav>
+            <a href="/">О нас</a>
+            <a href="/search">Найти слово</a>
+        </nav>
+    </header>
+
+   <div class="content">
+        <h2>О нас</h2>
+        <div class="about-section">
+            <div class="about-text">
+                <p>Здравствуйте! Приветствуем вас в корпусе русских сказок!</p>
+                <p>Наш корпус состоит из 120 сказок с сайта <a href="https://skazki-pesni.ru" target="_blank">skazki-pesni.ru</a>. В нём вы можете найти слова, их точные формы, слова определённых частей речи. Перейдите на страницу «Найти слово», чтобы это сделать.</p>
+                <p>Если у Вас возникли вопросы относительно работы корпуса, Вы можете их задать авторам проекта, написав в телеграмме. Мы всегда будем рады Вам ответить!</p>
+                <ul class="contact-list">
+                    <li>Майя Горшенина - <a href="https://t.me/latentgypsy" target="_blank">@latentgypsy</a></li>
+                    <li>Заряна Дамашова - <a href="https://t.me/Mr_ushanovich" target="_blank">@Mr_ushanovich</a></li>
+                    <li>Софья Черноусенко - <a href="https://t.me/carasinaa" target="_blank">@carasinaa</a></li>
+                    <li>София Герен - <a href="https://t.me/ssofiyk" target="_blank">@ssofiyk</a></li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="/static/images/cat_and_tree.jpeg" alt="Изображение кота у дерева">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
